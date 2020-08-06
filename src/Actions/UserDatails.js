@@ -1,6 +1,6 @@
 import {
   fetchProductsPending, fetchUserError, FetchUserDetails, BASE_URL,
-} from './index';
+} from './Index';
 
 import { LOGIN_USER_PENDING } from './action-type';
 
