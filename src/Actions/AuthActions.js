@@ -79,3 +79,31 @@ export const fetchUser = (token) => {
   };
 }
 
+ export const editProfile = (data, token, callBack) => {
+  return dispatch => {
+    const event = JSON.stringify(data);
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: event,
+    };
+    fetch(`${BASE_URL}/edit-profile`, requestOptions)
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) {
+          throw res.error;
+        }
+        if (res.id !== undefined) {
+          callBack();
+        } else {
+          inputValidation(res);
+        }
+        return res;
+      })
+      .catch(error => error);
+  };
+}
+
