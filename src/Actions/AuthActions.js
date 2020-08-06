@@ -58,3 +58,24 @@ export const createUser = (data) => {
   };
 }
 
+export const fetchUser = (token) => {
+  return dispatch => {
+    fetch(`${BASE_URL}/profile`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) {
+          throw res.error;
+        }
+        dispatch(FetchUserDetails(res));
+      })
+      .catch(error => {
+        dispatch(fetchUsersError(error));
+      });
+  };
+}
+
