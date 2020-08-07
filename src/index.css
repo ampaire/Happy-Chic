@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -32,4 +33,48 @@ code {
   width: 100%;
   height: 500px;
   object-fit: cover
+}
+
+.btn-container {
+  height: 10vh;
+  background-color: black;
+  width: 100%;
+  margin-left: 0rem;
+}
+
+.outlined-btn {
+  background: transparent;
+  padding: 1%;
+  outline: none;
+  margin-top: 10px;
+  height: 9vh;
+  min-width: 10vw;
+  border: none;
+  margin-left: 10%;
+  border-radius: 10%;
+  justify-self: right;
+}
+
+.divider {
+  width: 10%;
+  display: inline-block;
+}
+
+.links {
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.logo {
+  width: 10%;
+  height: 15vh;
+}
+
+.logo-img {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-cont {
 }
