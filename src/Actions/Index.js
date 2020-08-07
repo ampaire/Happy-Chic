@@ -2,7 +2,7 @@
 import {
   GET_USER,
   LOGIN_SUCCESS,
-  LOGOUT,
+  LOGOUT_SUCCESS,
   GET_ERRORS,
   CLEAR_ERRORS,
   LOGIN_FAIL,
@@ -32,30 +32,25 @@ export const LOGIN_USER = playload => ({
 });
 
 export const LOGOUT_USER = () => ({
-  type: LOGOUT,
+  type: LOGOUT_SUCCESS,
 });
 
 export const FetchUserDetails = playload => ({
   type: GET_USER,
   playload,
 });
-export const returnErrors = (msg, status = null, id = null) => {
-  return {
-      type: GET_ERRORS,
-      payload: { msg, status, id }
-  }
-}
+export const returnErrors = (msg, status = null, id = null) => ({
+  type: GET_ERRORS,
+  payload: { msg, status, id },
+});
 
-export const clearErrors = () => {
-  return {
-      type: CLEAR_ERRORS
-  }
-}
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS,
+});
 
 export const fetchUsersError = playload => ({
   type: LOGIN_FAIL,
   playload,
 });
-
 
 export const BASE_URL = 'https://effie-api.herokuapp.com';

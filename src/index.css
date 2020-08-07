@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.slide-container {
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+
+.alice-carousel__prev-btn [data-area]::after, .alice-carousel__next-btn [data-area]::after {
+  position: relative;
+  display: none;
+  content: attr(data-area);
+  text-transform: capitalize;
+  color: white;
+}
+
+
+.sliderimg{
+  width: 100%;
+  height: 500px;
+  object-fit: cover
+}
