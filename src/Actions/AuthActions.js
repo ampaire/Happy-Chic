@@ -1,13 +1,20 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 import {
   FetchUserDetails,
   fetchUsersError,
+  fetchProductsError,
+  fetchProductsPending,
   LOGIN_USER,
   BASE_URL,
 } from './Index';
 
+import { USER_LOADING } from './Types';
+
 import { inputValidation } from '../Helpers/Index';
 
 export const loginUser = data => dispatch => {
+  dispatch(fetchProductsPending(USER_LOADING));
   fetch(`${BASE_URL}/auth/login`,
     {
       method: 'POST',
@@ -27,12 +34,15 @@ export const loginUser = data => dispatch => {
       return res;
     })
     .catch(error => {
-      dispatch(fetchUsersError(error));
+      dispatch(fetchProductsError(error));
     });
 };
 
-export const createUser = () => dispatch => {
+export const createUser = data => dispatch => {
   const event = new FormData();
+  for (const name in data) {
+    event.append(name, data[name]);
+  }
   fetch(`${BASE_URL}/users`,
     {
       method: 'POST',
@@ -54,6 +64,7 @@ export const createUser = () => dispatch => {
 };
 
 export const fetchUser = token => dispatch => {
+  dispatch(fetchProductsPending(USER_LOADING));
   fetch(`${BASE_URL}/profile`, {
     headers: {
       'Content-Type': 'application/json',
@@ -72,7 +83,8 @@ export const fetchUser = token => dispatch => {
     });
 };
 
-export const editProfile = (data, token, callBack) => {
+export const editProfile = (data, token, callBack) => dispatch => {
+  dispatch(fetchProductsPending(USER_LOADING));
   const event = JSON.stringify(data);
   const requestOptions = {
     method: 'PUT',

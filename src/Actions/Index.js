@@ -6,7 +6,14 @@ import {
   GET_ERRORS,
   CLEAR_ERRORS,
   LOGIN_FAIL,
+  FETCH_PRODUCTS_ERROR,
+  FETCH_SINGLE_SUCCESS,
+  FETCH_PRODUCTS_SUCCESS,
+  REMOVE_FAV,
+  ADD_FAVORITE,
 } from './Types';
+
+export const BASE_URL = 'https://effie-api.herokuapp.com';
 
 export const saveToken = token => {
   localStorage.setItem('token', JSON.stringify(token));
@@ -53,4 +60,28 @@ export const fetchUsersError = playload => ({
   playload,
 });
 
-export const BASE_URL = 'https://effie-api.herokuapp.com';
+export const AddFavorite = () => ({ type: ADD_FAVORITE });
+
+export const removeFav = playload => ({
+  type: REMOVE_FAV,
+  playload,
+});
+
+export const fetchProductsSuccess = playload => ({
+  type: FETCH_PRODUCTS_SUCCESS,
+  playload,
+});
+
+export const fetchProductsError = playload => ({
+  type: FETCH_PRODUCTS_ERROR,
+  playload,
+});
+
+export const fetchSingleItem = playload => ({
+  type: FETCH_SINGLE_SUCCESS,
+  playload,
+});
+
+export const fetchProductsPending = type => ({
+  type,
+});
