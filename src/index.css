@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 
@@ -67,14 +68,11 @@ code {
 }
 
 .logo {
-  width: 10%;
+  width: 180px;
   height: 15vh;
 }
 
 .logo-img {
   display: flex;
   flex-direction: row;
-}
-
-.login-cont {
 }

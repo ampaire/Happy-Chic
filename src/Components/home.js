@@ -21,7 +21,6 @@ export default class Default extends Component {
           </div>
           <Slider />
         </header>
-        <h3>This is Default page</h3>
       </div>
     );
   }
