@@ -94,7 +94,7 @@ export const editProfile = (data, token, callBack) => dispatch => {
     },
     body: event,
   };
-  fetch(`${BASE_URL}/edit-profile`, requestOptions)
+  fetch(`${BASE_URL}/edit/profile`, requestOptions)
     .then(res => res.json())
     .then(res => {
       if (res.error) {
