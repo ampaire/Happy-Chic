@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
-import React, { Component } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,17 +14,16 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { loadingIcon } from '../Helpers/Index';
 import { loginUser, fetchUser } from '../Actions/AuthActions';
+import { loadingIcon } from '../Helpers/Index';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Chic Store
+        Chic store
       </Link>
       {' '}
       {new Date().getFullYear()}
@@ -32,27 +32,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-class SignIn extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +48,7 @@ class SignIn extends React.Component {
     if (store.user.auth_token !== '') {
       loadingIcon();
       fetchUser(store.user.auth_token);
-      history.push('/products');
+      history.push('/items');
     }
   }
 
@@ -86,19 +66,18 @@ class SignIn extends React.Component {
   }
 
   render() {
-    const classes = useStyles();
-
+    const { email, password } = this.state;
     return (
       <Container component="main" className="login-cont" maxWidth="xs">
         <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+        <div className="paper">
+          <Avatar className="avatar">
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate onSubmit={this.handleSubmit}>
+          <form className="form-control" Validate onSubmit={this.handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -108,6 +87,7 @@ class SignIn extends React.Component {
               onChange={this.handleChange}
               label="Email Address"
               name="email"
+              value={email}
               autoComplete="email"
               autoFocus
             />
@@ -120,6 +100,7 @@ class SignIn extends React.Component {
               label="Password"
               type="password"
               id="password"
+              value={password}
               autoComplete="current-password"
               onChange={this.handleChange}
             />
@@ -132,7 +113,7 @@ class SignIn extends React.Component {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
+              className="submit button"
               onChange={this.handleChange}
             >
               Sign In
@@ -159,11 +140,11 @@ class SignIn extends React.Component {
   }
 }
 
-SignIn.defaultProps = {
+LoginForm.defaultProps = {
   history: {},
 };
 
-SignIn.propTypes = {
+LoginForm.propTypes = {
   loginUser: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
   store: PropTypes.shape({
@@ -183,4 +164,4 @@ const mapDispatchToProps = {
 
 const mapStateToProps = store => ({ store });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

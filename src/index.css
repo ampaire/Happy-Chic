@@ -76,3 +76,24 @@ code {
   display: flex;
   flex-direction: row;
 }
+
+.paper {
+  margin-top: 8px;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.avatar {
+  margin: 5px;
+  background-color: blue;
+}
+
+form {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.submit {
+  margin: 0px auto;
+}
