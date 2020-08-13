@@ -90,7 +90,7 @@ class SignUpForm extends React.Component {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className="form" Validate onSubmit={this.handleSubmit}>
+          <form className="form" autoComplete="off" validate="true" onSubmit={this.handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField

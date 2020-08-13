@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
     if (store.user.auth_token !== '') {
       loadingIcon();
       fetchUser(store.user.auth_token);
-      history.push('/items');
+      history.push('/products');
     }
   }
 
@@ -77,7 +77,7 @@ class LoginForm extends React.Component {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className="form-control" Validate onSubmit={this.handleSubmit}>
+          <form className="form-control" autoComplete="off" validate="true" onSubmit={this.handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
